@@ -1,12 +1,12 @@
 import { CredentialType, IDKitWidget } from "@worldcoin/idkit";
 import type { ISuccessResult } from "@worldcoin/idkit";
 import styles from "../styles/Home.module.css";
+import { redirect } from 'next/navigation';
+
 
 export default function Home() {
 	const onSuccess = (result: ISuccessResult) => {
-
-		// This is where you should perform frontend actions once a user has been verified, such as redirecting to a new page
-
+		window.location.href = "https://xmtp.chat";
 	};
 
 	const handleProof = async (result: ISuccessResult) => {
@@ -36,8 +36,8 @@ export default function Home() {
 	return (
 		<div className={styles.container}>
 			<div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-				<IDKitWidget action={process.env.WLD_ACTION_NAME!} onSuccess={onSuccess} handleVerify={handleProof} app_id={process.env.NEXT_PUBLIC_WLD_APP_ID!} credential_types={[CredentialType.Orb, CredentialType.Phone]}>
-					{({ open }) => <button onClick={open}>Verify with World ID</button>}
+				<IDKitWidget action={process.env.NEXT_PUBLIC_WLD_ACTION_NAME!} onSuccess={onSuccess} handleVerify={handleProof} app_id={process.env.NEXT_PUBLIC_WLD_APP_ID!} credential_types={[CredentialType.Orb, CredentialType.Phone]}>
+					{({ open }) => <button onClick={open}>Connect XMTP Identity to  World ID</button>}
 				</IDKitWidget>
 			</div>
 		</div>

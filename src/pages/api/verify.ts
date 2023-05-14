@@ -25,7 +25,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Reply>
 		if (verifyRes.status == 200) {
 			res.status(200).send({ code: wldResponse.code });
 
-			// This is where you should perform backend actions based on the verified credential, such as setting a user as "verified" in a database
+			
 
 		} else {
 			res.status(400).send({ code: wldResponse.code });
